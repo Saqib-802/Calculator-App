@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  .calculator {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+  }
+  .btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .btn-operator {
+    background-color: #f39c12;
+    color: #fff;
+  }
+  .btn-clear {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" id="result" readonly>
+  <div>
+    <button class="btn" onclick="appendToResult('7')">7</button>
+    <button class="btn" onclick="appendToResult('8')">8</button>
+    <button class="btn" onclick="appendToResult('9')">9</button>
+    <button class="btn btn-operator" onclick="appendToResult('+')">+</button>
+  </div>
+  <div>
+    <button class="btn" onclick="appendToResult('4')">4</button>
+    <button class="btn" onclick="appendToResult('5')">5</button>
+    <button class="btn" onclick="appendToResult('6')">6</button>
+    <button class="btn btn-operator" onclick="appendToResult('-')">-</button>
+  </div>
+  <div>
+    <button class="btn" onclick="appendToResult('1')">1</button>
+    <button class="btn" onclick="appendToResult('2')">2</button>
+    <button class="btn" onclick="appendToResult('3')">3</button>
+    <button class="btn btn-operator" onclick="appendToResult('*')">*</button>
+  </div>
+  <div>
+    <button class="btn" onclick="appendToResult('0')">0</button>
+    <button class="btn" onclick="calculate()">=</button>
+    <button class="btn btn-clear" onclick="clearResult()">C</button>
+    <button class="btn btn-operator" onclick="appendToResult('/')">/</button>
+  </div>
+</div>
+<script>
+  function appendToResult(value) {
+    document.getElementById('result').value += value;
+  }
+
+  function clearResult() {
+    document.getElementById('result').value = '';
+  }
+
+  function calculate() {
+    try {
+      document.getElementById('result').value = eval(document.getElementById('result').value);
+    } catch (error) {
+      document.getElementById('result').value = 'Error';
+    }
+  }
+</script>
+</body>
+</html>
